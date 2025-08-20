@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Materi 11 - Server & Client</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(to bottom, #e6f0ff, #3399ff);
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    color: #0059b3;
+    margin-bottom: 10px;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #3399ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .nav-buttons a:hover {
+    background: #003366;
+    transform: translateY(-3px);
+  }
+
+  hr {
+    border: 0;
+    border-top: 2px solid #3399ff;
+    margin: 20px 0;
+  }
+
+  .materi-content h2 {
+    color: #003366;
+    margin-top: 20px;
+  }
+
+  .subtopic-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .subtopic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  }
+
+  pre {
+    background: #e6f0ff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: monospace;
+    color: #cc0000;
+  }
+
+  .illustration {
+    text-align: center;
+    margin: 15px 0;
+  }
+
+  .illustration svg rect {
+    stroke: #3399ff;
+    stroke-width: 2;
+    fill: #fff;
+    rx: 6;
+  }
+
+  .illustration svg text {
+    font-size: 12px;
+    fill: #1a1a1a;
+    text-anchor: middle;
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Materi 11: Server & Client</h1>
+    <div class="nav-buttons">
+      <a href="index.html">← Beranda</a>
+      <a href="materi10.html" class="btn">Materi Sebelumnya →</a>
+      <a href="materi12.html">Materi Selanjutnya →</a>
+    </div>
+  </header>
+
+  <hr>
+
+  <section class="materi-content">
+
+    <div class="subtopic-card">
+      <p>Model <b>client–server</b>: client meminta layanan, server menyediakan. Contoh: browser (client) ↔ web server (HTTP).</p>
+    </div>
+
+    <div class="subtopic-card illustration">
+      <h2>Diagram Client & Server</h2>
+      <svg width="320" height="160" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="50" width="100" height="50"/>
+        <text x="90" y="80">Client</text>
+
+        <rect x="180" y="50" width="100" height="50"/>
+        <text x="230" y="80">Server</text>
+
+        <line x1="140" y1="75" x2="180" y2="75" stroke="#1a6600" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#1a6600"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Jenis Server Umum</h2>
+      <ul>
+        <li>Web Server (HTTP/HTTPS)</li>
+        <li>File Server (Simpan & share file)</li>
+        <li>Database Server (MySQL, PostgreSQL, SQL Server)</li>
+        <li>DNS Server (Resolusi nama domain)</li>
+        <li>DHCP Server (Alokasi IP otomatis)</li>
+        <li>Mail Server (Email)</li>
+        <li>Application Server (Layanan aplikasi)</li>
+      </ul>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Tips Praktis</h2>
+      <ul>
+        <li>Pastikan server selalu diupdate dan diamankan</li>
+        <li>Batasi akses client sesuai kebutuhan</li>
+        <li>Gunakan backup dan monitoring untuk server kritikal</li>
+      </ul>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Kesimpulan</h2>
+      <p>Memahami arsitektur client-server membantu merancang layanan jaringan yang efisien, aman, dan mudah di-maintain.</p>
+    </div>
+
+  </section>
+</div>
+</body>
+</html>

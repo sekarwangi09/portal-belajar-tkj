@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Game & Kuis TI - SMK</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <style>
+    :root{
+      --bg1:#e6f0ff;
+      --bg2:#ffffff;
+      --ink:#2a2e35;
+      --muted:#667085;
+      --blue:#5b7cfa;
+      --blue-ink:#0b2aa6;
+      --pink:#ff7aa2;
+      --green:#31c48d;
+      --card:#ffffff;
+      --ring:rgba(0,0,0,.08);
+    }
+    /* ====== GLOBAL ====== */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+    header{
+      padding:22px 16px;
+      text-align:center;
+      background: linear-gradient(90deg, var(--blue), #2a5bd7);
+      color:#fff;
+    }
+    header h1{
+      margin:0 0 6px;
+      font-size:clamp(22px,3.5vw,32px);
+      letter-spacing:.2px;
+    }
+    header p{
+      margin:0;
+      opacity:.95;
+    }
+
+    /* ====== WRAPPER ====== */
+    .wrap{
+      max-width:1100px;
+      margin: 18px auto 32px;
+      padding:0 16px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:22px;
+    }
+
+    /* ====== GAME CARD (kolom menurun/vertikal) ====== */
+    .game-card{
+      background:var(--card);
+      border-radius:16px;
+      box-shadow: 0 8px 28px var(--ring);
+      padding:18px;
+      overflow:hidden;
+      border:1px solid #eef2ff;
+    }
+    .game-head{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.3px;
+      color:#fff;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .pill.blue{ background: linear-gradient(90deg, var(--blue), var(--blue-ink)); }
+    .pill.pink{ background: linear-gradient(90deg, var(--pink), #ff4d7d); }
+    .pill.green{ background: linear-gradient(90deg, var(--green), #0ea371); }
+
+    .game-title{
+      margin:0;
+      font-size:clamp(18px,3vw,22px);
+    }
+    .game-sub{
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* ====== CONTROLS / FORMS ====== */
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin:12px 0 14px;
+    }
+    .control{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:160px;
+    }
+    label{
+      font-size:12px;
+      color:var(--muted);
+    }
+    select, input[type="text"]{
+      padding:10px 12px;
+      border:1px solid #d6dbe8;
+      border-radius:10px;
+      font-size:14px;
+      outline:none;
+      transition:.18s border;
+      background:#f8faff;
+    }
+    select:focus, input[type="text"]:focus{ border-color: var(--blue); }
+
+    /* ====== BUTTONS ====== */
+    .btn{
+      padding:10px 14px;
+      border:none;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.18s transform,.18s opacity,.18s background;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .btn:active{ transform:translateY(1px); }
+    .btn.primary{ background:var(--blue); color:#fff; }
+    .btn.subtle{ background:#eef3ff; color:#213; }
+    .btn.green{ background:var(--green); color:#fff; }
+    .btn.pink{ background:var(--pink); color:#fff; }
+
+    /* ====== QUIZ ====== */
+    .quiz-box{
+      background: #f7f9ff;
+      border-radius:14px;
+      padding:14px;
+      border:1px dashed #c7d2fe;
+    }
+    .quiz-progress{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      margin-bottom:10px;
+      font-size:14px;
+      color:#3b4a8a;
+    }
+    .question{
+      font-weight:700;
+      margin:6px 0 10px;
+    }
+    .options{
+      display:grid;
+      gap:10px;
+    }
+    .opt-btn{
+      text-align:left;
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid #dfe6ff;
+      background:#fff;
+      cursor:pointer;
+      transition:.18s background,.18s border;
+    }
+    .opt-btn:hover{ background:#f2f6ff; }
+    .opt-btn.correct{ border-color:#22c55e; background:#ecfdf5; }
+    .opt-btn.wrong{ border-color:#ef4444; background:#fef2f2; }
+    .score{
+      margin-top:10px;
+      font-weight:700;
+      color:#1640d6;
+    }
+
+    /* ====== TEBAK KATA ====== */
+    .word-box{
+      background:#fff7fb;
+      border:1px dashed #ffc1d5;
+      border-radius:14px;
+      padding:14px;
+    }
+    .word-q{
+      font-weight:700;
+      margin-bottom:10px;
+      color:#8a1238;
+    }
+    .word-feedback{
+      min-height:20px;
+      margin-top:8px;
+      font-weight:700;
+    }
+    .ok{ color:#0ea371; }
+    .no{ color:#e11d48; }
+
+    /* ====== MEMORY ====== */
+    .mem-info{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin:10px 0 12px;
+      font-size:14px;
+      color:#0a5b3c;
+    }
+    .memorize{
+      font-weight:700;
+    }
+    .board{
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(auto-fit, minmax(90px,1fr));
+      margin-top:10px;
+    }
+    .card{
+      perspective: 800px;
+      user-select:none;
+    }
+    .card-inner{
+      position:relative;
+      width:100%;
+      padding-top:120%; /* aspect */
+      transform-style:preserve-3d;
+      transition: transform .35s ease;
+      border-radius:12px;
+      box-shadow:0 6px 18px var(--ring);
+    }
+    .face{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+      border-radius:12px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+    }
+    .front{
+      background:#e8f7ef;
+      border:1px solid #bfead5;
+      color:#0a5b3c;
+      font-weight:700;
+    }
+    .back{
+      transform:rotateY(180deg);
+      background:#ffffff;
+      border:1px solid #cce3ff;
+      color:#0b2aa6;
+      text-align:center;
+      padding:6px;
+    }
+    .emoji{
+      font-size:28px;
+      line-height:1;
+    }
+    .label{
+      font-size:13px;
+      font-weight:700;
+    }
+    .flipped .card-inner{ transform:rotateY(180deg); }
+    .matched .card-inner{ outline:2px solid #31c48d; }
+
+    /* ====== FOOTER ====== */
+    footer{
+      text-align:center;
+      color:#667085;
+      font-size:13px;
+      padding:20px 12px 28px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎮 Gamifikasi Teknologi Informasi </h1>
+
+  </header>
+
+  <main class="wrap">
+
+    <!-- ===== QUIZ ===== -->
+    <section class="game-card" id="quiz">
+      <div class="game-head">
+        <span class="pill blue">📝 Quiz TI</span>
+        <div>
+          <h2 class="game-title">Pilihan Ganda • Materi SMK</h2>
+          
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label for="quizCategory">Kategori</label>
+          <select id="quizCategory">
+            <option value="campuran">Campuran (semua materi)</option>
+            <option value="jaringan">Jaringan Dasar</option>
+            <option value="perangkat">Perangkat Jaringan</option>
+            <option value="topologi">Topologi</option>
+            <option value="ip">IP Address</option>
+            <option value="subnetting">Subnetting</option>
+            <option value="routing">Routing</option>
+            <option value="vlan">Switching & VLAN</option>
+            <option value="osi">Model OSI</option>
+            <option value="tcpip">Model TCP/IP</option>
+            <option value="keamanan">Keamanan</option>
+            <option value="serverclient">Server & Client</option>
+            <option value="hardware">Hardware</option>
+            <option value="software">Software & OS</option>
+            <option value="htmlcss">HTML & CSS</option>
+            <option value="jssql">JavaScript & SQL</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="quizCount">Jumlah Soal</label>
+          <select id="quizCount">
+            <option value="5" selected>5 Soal</option>
+            <option value="10">10 Soal</option>
+          </select>
+        </div>
+        <div class="control" style="align-self:flex-end">
+          <button class="btn primary" id="quizStart">Mulai / Acak Ulang</button>
+          <button class="btn subtle" id="quizReset">Reset</button>
+        </div>
+      </div>
+
+      <div class="quiz-box">
+        <div class="quiz-progress">
+          <div id="quizProg">Soal 0/0</div>
+          <div class="score" id="quizScore">Skor: 0</div>
+        </div>
+        <div class="question" id="quizQuestion">Pilih kategori & jumlah soal, lalu klik “Mulai”.</div>
+        <div class="options" id="quizOptions"></div>
+      </div>
+    </section>
+
+    <!-- ===== TEBAK KATA ===== -->
+    <section class="game-card" id="word">
+      <div class="game-head">
+        <span class="pill pink">🔤 Tebak Kata</span>
+        <div>
+          <h2 class="game-title">Jawab Cepat • 20 Soal Acak</h2>
+          
+        </div>
+      </div>
+
+      <div class="word-box">
+        <div class="word-q" id="wordQuestion">Klik “Mulai” untuk memulai sesi.</div>
+        <div class="controls">
+          <div class="control" style="min-width:220px">
+            <label for="wordInput">Jawaban kamu</label>
+            <input type="text" id="wordInput" placeholder="Ketik jawaban singkat… (Enter untuk kirim)">
+          </div>
+          <div class="control" style="align-self:flex-end">
+            <button class="btn pink" id="wordSubmit">Kirim Jawaban</button>
+            <button class="btn subtle" id="wordReset">Reset</button>
+            <button class="btn primary" id="wordStart">Mulai</button>
+          </div>
+        </div>
+        <div class="word-feedback" id="wordFeedback"></div>
+        <div class="quiz-progress" style="margin-top:10px">
+          <div id="wordProg">Soal 0/20</div>
+          <div class="score" id="wordScore">Benar: 0</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEMORY CARD ===== -->
+    <section class="game-card" id="memory">
+      <div class="game-head">
+        <span class="pill green">🃏 Memory Card</span>
+        <div>
+          <h2 class="game-title">Pasangkan Gambar + Tulisan</h2>
+          
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label for="memDuration">Durasi Permainan</label>
+          <select id="memDuration">
+            <option value="300">5 menit</option>
+            <option value="600" selected>10 menit</option>
+          </select>
+        </div>
+        <div class="control" style="align-self:flex-end">
+          <button class="btn green" id="memStart">Mulai</button>
+          <button class="btn subtle" id="memReset">Reset</button>
+        </div>
+      </div>
+
+      <div class="mem-info">
+        <div class="memorize" id="memPreview">Preview: —</div>
+        <div id="memTimer">⏱ Waktu: —</div>
+        <div id="memStat">Skor: 0 pasangan</div>
+        <div id="memMoves">Langkah: 0</div>
+      </div>
+
+      <div class="board" id="memBoard"><!-- kartu akan dirender via JS --></div>
+    </section>
+
+  </main>
+
+  <footer>© 2025 Portal Belajar TKJ — Halaman Game & Kuis</footer>
+
+  <!-- JS terpisah -->
+  <script src="script.js"></script>
+</body>
+</html>

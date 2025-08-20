@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Materi 6 - Routing Dasar</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(to bottom, #cce7ff, #5b7cfa);
+    color: #2a2e35;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    color: #1a2a6c;
+    margin-bottom: 10px;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #5b7cfa;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .nav-buttons a:hover {
+    background: #1a2a6c;
+    transform: translateY(-3px);
+  }
+
+  hr {
+    border: 0;
+    border-top: 2px solid #5b7cfa;
+    margin: 20px 0;
+  }
+
+  .materi-content h2 {
+    color: #3a5bcc;
+    margin-top: 20px;
+  }
+
+  .materi-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+
+  .note {
+    background: #e6f0ff;
+    padding: 12px 15px;
+    border-left: 5px solid #5b7cfa;
+    margin: 15px 0;
+    border-radius: 8px;
+  }
+
+  .illustration {
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  .illustration img {
+    border-radius: 12px;
+    border: 2px solid #5b7cfa;
+    max-width: 100%;
+  }
+
+  .subtopic-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .subtopic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  }
+
+  pre {
+    background: #f0f4ff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: monospace;
+    color: #d6336c;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Materi 6: Routing Dasar</h1>
+    <div class="nav-buttons">
+      <a href="index.html">← Beranda</a>
+      <a href="materi5.html" class="btn">Materi Sebelumnya →</a>
+      <a href="materi7.html">Materi Selanjutnya →</a>
+    </div>
+  </header>
+
+  <hr>
+
+  <section class="materi-content">
+
+    <div class="subtopic-card">
+      <p><b>Routing</b> adalah proses menentukan jalur dari jaringan sumber ke jaringan tujuan. Dilakukan oleh <b>router</b> dengan membaca tabel routing.</p>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Jenis Routing</h2>
+      <ul>
+        <li><b>Statik:</b> rute ditambahkan secara manual oleh administrator</li>
+        <li><b>Dinamik:</b> router menggunakan protokol seperti RIP, OSPF, EIGRP, BGP untuk update rute otomatis</li>
+      </ul>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Contoh Konsep Routing</h2>
+      <pre><code># contoh pseudo code routing
+/* Router A mengetahui:
+   - 192.168.10.0/24 via interface 1
+   - 192.168.20.0/24 via interface 2 */
+</code></pre>
+      <div class="illustration">
+        <img alt="Diagram Routing" src="data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' width='520' height='180'>
+        <rect width='520' height='180' fill='%23f5f7ff' rx='12'/>
+        <rect x='50' y='60' width='120' height='40' rx='6' fill='%23fff' stroke='%235b7cfa'/>
+        <text x='110' y='85' font-size='12' text-anchor='middle'>Jaringan 10.0.0.0/24</text>
+        <rect x='350' y='60' width='120' height='40' rx='6' fill='%23fff' stroke='%235b7cfa'/>
+        <text x='410' y='85' font-size='12' text-anchor='middle'>Jaringan 20.0.0.0/24</text>
+        <rect x='200' y='120' width='120' height='40' rx='6' fill='%23fff' stroke='%235b7cfa'/>
+        <text x='260' y='145' font-size='12' text-anchor='middle'>Router A</text>
+        <line x1='110' y1='100' x2='260' y2='120' stroke='%230b1020'/>
+        <line x1='410' y1='100' x2='260' y2='120' stroke='%230b1020'/>
+        </svg>">
+      </div>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Tips Routing</h2>
+      <ul>
+        <li>Gunakan routing statik untuk jaringan kecil dan sederhana</li>
+        <li>Gunakan routing dinamik untuk jaringan besar dan kompleks</li>
+        <li>Pastikan tabel routing selalu terupdate untuk mencegah loop atau lost packet</li>
+      </ul>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Kesimpulan</h2>
+      <p>Routing memastikan data sampai ke tujuan melalui jalur terbaik. Memahami routing statik & dinamik penting untuk manajemen jaringan yang efisien.</p>
+    </div>
+
+  </section>
+</div>
+</body>
+</html>

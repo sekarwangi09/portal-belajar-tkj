@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Materi 4 - IP Address</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(to bottom, #cce7ff, #5b7cfa);
+    color: #2a2e35;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    color: #1a2a6c;
+    margin-bottom: 10px;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #5b7cfa;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .nav-buttons a:hover {
+    background: #1a2a6c;
+    transform: translateY(-3px);
+  }
+
+  hr {
+    border: 0;
+    border-top: 2px solid #5b7cfa;
+    margin: 20px 0;
+  }
+
+  .materi-content h2 {
+    color: #3a5bcc;
+    margin-top: 20px;
+  }
+
+  .materi-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+
+  .note {
+    background: #e6f0ff;
+    padding: 12px 15px;
+    border-left: 5px solid #5b7cfa;
+    margin: 15px 0;
+    border-radius: 8px;
+  }
+
+  .illustration {
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  .illustration img {
+    border-radius: 12px;
+    border: 2px solid #5b7cfa;
+    max-width: 100%;
+  }
+
+  .subtopic-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .subtopic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  }
+
+  .inline-code {
+    background: #f0f0f0;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #d6336c;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Materi 4: IP Address</h1>
+    <div class="nav-buttons">
+      <a href="index.html">← Beranda</a>
+      <a href="materi3.html" class="btn">Materi Sebelumnya →</a>
+      <a href="materi5.html">Materi Selanjutnya →</a>
+    </div>
+  </header>
+
+  <hr>
+
+  <section class="materi-content">
+    <div class="subtopic-card">
+      <p><b>IP Address</b> adalah alamat numerik unik untuk setiap perangkat di jaringan. IPv4 panjangnya 32-bit (empat oktet). Contoh: <span class="inline-code">192.168.1.10</span>.</p>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Kelas IP & Rentang Privat</h2>
+      <ul>
+        <li><b>Privat:</b> 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16</li>
+        <li><b>Publik:</b> di luar rentang privat, diberikan ISP</li>
+      </ul>
+      <div class="illustration">
+        <img alt="Diagram IP Address" src="data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' width='520' height='180'>
+        <rect width='520' height='180' fill='%23f5f7ff' rx='12'/>
+        <rect x='50' y='50' width='120' height='40' rx='6' fill='%23fff' stroke='%235b7cfa'/>
+        <text x='110' y='75' font-size='12' text-anchor='middle'>192.168.1.0/24</text>
+        <rect x='200' y='50' width='120' height='40' rx='6' fill='%23fff' stroke='%235b7cfa'/>
+        <text x='260' y='75' font-size='12' text-anchor='middle'>10.0.0.0/8</text>
+        <rect x='350' y='50' width='120' height='40' rx='6' fill='%23fff' stroke='%235b7cfa'/>
+        <text x='410' y='75' font-size='12' text-anchor='middle'>172.16.0.0/12</text>
+        </svg>">
+      </div>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Subnet Mask</h2>
+      <p>Subnet menentukan bagian jaringan & host. Contoh: <span class="inline-code">255.255.255.0</span> = /24. Subnet membantu membagi jaringan besar menjadi jaringan lebih kecil untuk manajemen dan keamanan.</p>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Tips IP Address</h2>
+      <ul>
+        <li>Gunakan alamat privat untuk jaringan internal agar aman.</li>
+        <li>Catat semua IP agar tidak terjadi konflik.</li>
+        <li>Gunakan DHCP untuk otomatisasi IP jika banyak host.</li>
+      </ul>
+    </div>
+
+    <div class="subtopic-card">
+      <h2>Kesimpulan</h2>
+      <p>Memahami IP Address & subnet sangat penting untuk mengelola jaringan yang efisien, aman, dan dapat diatur dengan baik.</p>
+    </div>
+  </section>
+</div>
+</body>
+</html>

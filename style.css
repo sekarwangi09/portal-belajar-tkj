@@ -1,0 +1,277 @@
+:root{
+  --bg:#f6f8fb;
+  --surface:#ffffff;
+  --text:#2a2e35;
+  --muted:#6b7280;
+  --primary:#5b7cfa;
+  --primary-weak:#e9eeff;
+  --border:#e5e7eb;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: linear-gradient(to bottom, #cce7ff, #5b7cfa); /* gradasi biru muda ke biru tua */
+  color: #2a2e35; /* warna teks utama */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* pastikan body penuh layar */
+}
+
+
+/* Header / Nav */
+.header{
+  background: linear-gradient(180deg, #6a85ff, #5b7cfa);
+  color: #270f69;
+  padding: 24px 16px;
+  text-align:center;
+  position:sticky; top:0; z-index:10;
+  box-shadow: 0 2px 16px rgba(0,0,0,.1);
+}
+.header h1{margin:0 0 6px 0; font-weight:800; letter-spacing:.3px}
+.header p{margin:0 0 12px 0; opacity:.95}
+.nav a{
+  display:inline-block; margin:0 8px; padding:8px 12px;
+  color:#fff; text-decoration:none; border-radius:8px; font-weight:600;
+}
+.nav a.active,.nav a:hover{background: rgba(255,255,255,.18)}
+
+/* Layout */
+.container{display:flex; align-items:stretch; gap:0; max-width:1200px; margin:20px auto}
+/* Sidebar dasar */
+.sidebar {
+  width: 220px; /* ukuran sidebar */
+  background: #1a2a6c; /* biru tua */
+  padding: 20px;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+/* Judul sidebar */
+.sidebar h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Daftar link */
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Item link */
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+/* Link */
+.sidebar ul li a {
+  display: block;
+  padding: 10px 15px;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+  background: rgba(255,255,255,0.05); /* sedikit latar transparan */
+}
+
+/* Hover link */
+.sidebar ul li a:hover {
+  background: #0d1b4f; /* biru lebih gelap saat hover */
+  transform: translateX(5px);
+}
+
+/* Scrollbar untuk sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #5b7cfa;
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #1a2a6c;
+}
+
+.content{
+  flex:1; padding:20px; background:var(--surface); border-left:1px solid var(--border); border-radius:0 12px 12px 0;
+}
+
+.hero{background: #f8faff; border:1px solid var(--border); padding:20px; border-radius:12px}
+.btn{background: var(--primary); color:#fff; text-decoration:none; padding:10px 14px; border-radius:8px; display:inline-block; margin-right:8px; font-weight:700}
+.btn:hover{filter:brightness(.95)}
+.btn-outline{background:#fff; color:var(--primary); border:1px solid var(--primary)}
+
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:18px}
+.card{background:#fff; border:1px solid var(--border); padding:16px; border-radius:12px}
+
+.footer{margin-top:24px; text-align:center; color:var(--muted); padding:20px}
+
+/* Materi pages */
+.page{max-width:980px; margin:20px auto; background:#fff; border:1px solid var(--border); border-radius:12px; padding:22px}
+.page header{background:transparent; color:var(--text); text-align:left; padding:0;}
+.page nav a{color:var(--primary); background:transparent; padding:0; margin-right:12px}
+hr{border:none; border-top:1px solid var(--border); margin:16px 0}
+h1,h2{line-height:1.3}
+.note{background:#f5f7ff; border-left:4px solid var(--primary); padding:10px 12px; border-radius:6px}
+pre,code{background:#0b1020; color:#d7e1ff; padding:12px; border-radius:10px; overflow:auto; display:block}
+.inline-code{background:#eef2ff; color:#2b3be0; padding:2px 6px; border-radius:6px}
+
+/* Quiz */
+.quiz-wrap{max-width:880px; margin:20px auto; background:#fff; border:1px solid var(--border); border-radius:12px; padding:20px}
+.selects{display:flex; gap:12px; flex-wrap:wrap}
+button{cursor:pointer; border:none; border-radius:10px; padding:10px 14px; font-weight:700}
+.btn-start{background:var(--primary); color:#fff}
+.btn-alt{background:#f1f5ff; color:#2b3be0}
+.option{display:block; width:100%; text-align:left; margin-top:10px; background:#f7f8fc; border:1px solid var(--border)}
+.option.correct{background:#eaffea; border-color:#2ecc71}
+.option.wrong{background:#ffecec; border-color:#ff6b6b}
+
+/* Responsive */
+@media (max-width: 980px){
+  .container{flex-direction:column}
+  .sidebar{position:relative; top:0; height:auto; width:auto; border-radius:12px; margin:0 16px}
+  .content{border-left:none; border-radius:12px; margin:12px 16px}
+  .grid{grid-template-columns: 1fr}
+  .page{margin:12px}
+}
+/* Card dasar */
+.card {
+  background: linear-gradient(135deg, #ffffff, #e6f0ff);
+  border-radius: 15px;
+  padding: 25px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efek hover card */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Judul card - warna solid untuk semua browser */
+.card h3 {
+  font-size: 1.5rem;
+  color: #3a5bcc;  /* aman di semua browser */
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+/* Paragraf card */
+.card p {
+  font-size: 1rem;
+  color: #2a2e35;
+  line-height: 1.6;
+}
+
+/* Tambahan responsif */
+@media (max-width: 768px) {
+  .card {
+    padding: 20px 15px;
+  }
+
+  .card h3 {
+    font-size: 1.3rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+  }
+}
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: linear-gradient(to bottom, #cce7ff, #5b7cfa);
+  color: #2a2e35;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.materi-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.materi-header h1 {
+  font-size: 2rem;
+  color: #1a2a6c;
+  margin-bottom: 10px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-buttons .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #5b7cfa;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.nav-buttons .btn:hover {
+  background: #1a2a6c;
+  transform: translateY(-3px);
+}
+
+hr {
+  border: 0;
+  border-top: 2px solid #5b7cfa;
+  margin: 20px 0;
+}
+
+.materi-content h2 {
+  color: #3a5bcc;
+  margin-top: 20px;
+}
+
+.materi-content ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.note {
+  background: #e6f0ff;
+  padding: 12px 15px;
+  border-left: 5px solid #5b7cfa;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.illustration {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.illustration img {
+  border-radius: 12px;
+  border: 2px solid #5b7cfa;
+  max-width: 100%;
+}
+
+
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materi 15 - JavaScript & SQL Interaktif</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(to bottom, #f0f8ff, #99ccff);
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    color: #0059b3;
+    margin-bottom: 10px;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #3399ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .nav-buttons a:hover {
+    background: #003366;
+    transform: translateY(-3px);
+  }
+
+  hr {
+    border: 0;
+    border-top: 2px solid #3399ff;
+    margin: 20px 0;
+  }
+
+  h2 {
+    color: #003366;
+    margin-top: 20px;
+  }
+
+  pre {
+    background: #e6f0ff;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+  }
+
+  code {
+    font-family: monospace;
+    color: #cc0000;
+  }
+
+  .subtopic-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .subtopic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #3399ff;
+  }
+
+  button.run-btn {
+    background: #3399ff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  button.run-btn:hover {
+    background: #003366;
+  }
+
+  iframe.result-frame {
+    width: 100%;
+    height: 150px;
+    border: 2px solid #3399ff;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Materi 15: JavaScript & SQL Interaktif</h1>
+    <div class="nav-buttons">
+      <a href="index.html">← Beranda</a>
+      <a href="materi14.html" class="btn">Materi Sebelumnya →</a>
+      <a href="quiz.html">Materi Selanjutnya →</a>
+    </div>
+  </header>
+
+  <hr>
+
+  <div class="subtopic-card">
+    <h2>JavaScript: Interaksi Dasar</h2>
+    <pre><code>&lt;button onclick="alert('Halo!')"&gt;Klik Aku&lt;/button&gt;
+&lt;script&gt;
+  console.log('Belajar JS itu seru!');
+  function tambah(a,b){ return a+b }
+  console.log('2+3=', tambah(2,3));
+&lt;/script&gt;
+</code></pre>
+    <textarea id="jsCode">console.log('Halo Dunia!'); alert('Coba JS sekarang!');</textarea>
+    <button class="run-btn" onclick="runJS()">Jalankan JS</button>
+    <iframe class="result-frame" id="jsFrame"></iframe>
+  </div>
+
+  <div class="subtopic-card">
+    <h2>SQL: Query Dasar</h2>
+    <pre><code>-- Membuat tabel
+CREATE TABLE siswa(
+  id INT PRIMARY KEY,
+  nama VARCHAR(100),
+  kelas VARCHAR(20)
+);
+
+-- Menambah data
+INSERT INTO siswa(id,nama,kelas) VALUES (1,'Ani','XI TKJ 1');
+
+-- Mengambil data
+SELECT * FROM siswa;
+</code></pre>
+    <p>Gunakan perintah ini di MySQL atau SQLite untuk praktik database. (SQL tidak bisa dijalankan langsung di browser.)</p>
+  </div>
+
+</div>
+
+<script>
+function runJS() {
+  const code = document.getElementById("jsCode").value;
+  const frame = document.getElementById("jsFrame");
+  frame.srcdoc = `<script>${code}<\/script>`;
+}
+</script>
+</body>
+</html>

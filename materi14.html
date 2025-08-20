@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materi 14 - HTML & CSS Interaktif</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(to bottom, #f0f8ff, #99ccff);
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    color: #0059b3;
+    margin-bottom: 10px;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #3399ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .nav-buttons a:hover {
+    background: #003366;
+    transform: translateY(-3px);
+  }
+
+  hr {
+    border: 0;
+    border-top: 2px solid #3399ff;
+    margin: 20px 0;
+  }
+
+  h2 {
+    color: #003366;
+    margin-top: 20px;
+  }
+
+  pre {
+    background: #e6f0ff;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+  }
+
+  code {
+    font-family: monospace;
+    color: #cc0000;
+  }
+
+  .subtopic-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .subtopic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 150px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #3399ff;
+  }
+
+  button.run-btn {
+    background: #3399ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  button.run-btn:hover {
+    background: #003366;
+  }
+
+  iframe.result-frame {
+    width: 100%;
+    height: 200px;
+    border: 2px solid #3399ff;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Materi 14: HTML & CSS Interaktif</h1>
+    <div class="nav-buttons">
+      <a href="index.html">← Beranda</a>
+      <a href="materi13.html" class="btn">Materi Sebelumnya →</a>
+      <a href="materi15.html">Materi Selanjutnya →</a>
+    </div>
+  </header>
+
+  <hr>
+
+  <div class="subtopic-card">
+    <h2>HTML: Struktur Dasar</h2>
+    <p>HTML digunakan untuk membuat struktur halaman web. Contoh:</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Judul&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo Dunia&lt;/h1&gt;
+  &lt;p&gt;Paragraf pertama&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    <textarea id="htmlCode">&lt;h1&gt;Halo Dunia&lt;/h1&gt;
+&lt;p&gt;Ini paragraf coba&lt;/p&gt;</textarea>
+    <button class="run-btn" onclick="runHTML()">Jalankan</button>
+    <iframe class="result-frame" id="resultFrame"></iframe>
+  </div>
+
+  <div class="subtopic-card">
+    <h2>CSS: Styling Dasar</h2>
+    <p>CSS digunakan untuk memberi style pada halaman. Contoh:</p>
+    <pre><code>body { font-family: Arial; color:#333; }
+h1 { color: #5b7cfa; }
+p { line-height: 1.6; }</code></pre>
+    <textarea id="cssCode">h1 { color: red; }
+p { font-size: 18px; }</textarea>
+    <button class="run-btn" onclick="runCSS()">Jalankan CSS</button>
+    <iframe class="result-frame" id="cssFrame"></iframe>
+  </div>
+
+</div>
+
+<script>
+function runHTML() {
+  const code = document.getElementById("htmlCode").value;
+  const frame = document.getElementById("resultFrame");
+  frame.srcdoc = code;
+}
+
+function runCSS() {
+  const css = document.getElementById("cssCode").value;
+  const frame = document.getElementById("cssFrame");
+  const content = `<html><head><style>${css}</style></head><body><h1>Judul Contoh</h1><p>Paragraf contoh CSS</p></body></html>`;
+  frame.srcdoc = content;
+}
+</script>
+</body>
+</html>
